@@ -151,6 +151,32 @@ public class Application {
         updateItemById(item.getId(), item);
         System.out.println("Item updated  --> " + item);
 
+
+        System.out.println("Getting Item...");
+        Item itemFromDB = getItemById(item1.getId());
+        System.out.println("Item from DB  --> " + itemFromDB);
+
+
+        System.out.println("Deleting Item...");
+        deleteItemById(itemFromDB.getId());
+        System.out.println("Item Deleted");
+
+
+
+/*
+        System.out.println("Changing name to `Shubham Aggarwal`...");
+        person.setName("Shubham Aggarwal");
+        updatePersonById(person.getPersonId(), person);
+        System.out.println("Person updated  --> " + person);
+
+        System.out.println("Getting Shubham...");
+        Person personFromDB = getPersonById(person.getPersonId());
+        System.out.println("Person from DB  --> " + personFromDB);
+
+        System.out.println("Deleting Shubham...");
+        deletePersonById(personFromDB.getPersonId());
+        System.out.println("Person Deleted");
+*/
         closeConnection();
     }
 }
