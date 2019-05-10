@@ -66,6 +66,15 @@ public class Application {
         dataMap.put("subtitle", item.getSubtitle());
         dataMap.put("sellerId", item.getSellerId());
         dataMap.put("categoryId", item.getCategoryId());
+        dataMap.put("price", item.getPrice());
+        dataMap.put("currencyId", item.getCurrencyId());
+        dataMap.put("availableQuantity", item.getAvailableQuantity());
+        dataMap.put("condition", item.getCondition());
+        dataMap.put("pictures", item.getPictures());
+        dataMap.put("acceptsMercadopago", item.getAcceptsMercadopago());
+        dataMap.put("status", item.getStatus());
+        dataMap.put("dateCreated", item.getDateCreated());
+        dataMap.put("lastUpdated", item.getLastUpdated());
 
         IndexRequest indexRequest = new IndexRequest(INDEX, TYPE, item.getId())
                 .source(dataMap);
@@ -126,57 +135,48 @@ public class Application {
 
         System.out.println("Inserto un nuevo item ...");
         Item item = new Item();
-        item.setId("MLA608007087");
+        item.setId("MLA695166154");
         item.setSiteId("MLA");
-        item.setTitle("Item De Testeo, Por Favor No Ofertar --kc:off");
-        item.setSubtitle("testeo");
-        item.setSellerId(202593498);
-        item.setCategoryId("MLA3530");
+        item.setTitle("iPhone 8 Apple 64gb Plus 4g 4k Sellado Garantia 1 Año!");
+        item.setSubtitle("");
+        item.setSellerId(128885);
+        item.setCategoryId("MLA1055");
+        item.setPrice(55998);
+        item.setCurrencyId("ARS");
+        item.setAvailableQuantity(1);
+        item.setCondition("");
         item = insertItem(item);
-        System.out.println("item inserted --> " + item.toString());
+        System.out.println("item insertado --> " + item.toString());
 
         System.out.println("Inserto un otro  item ...");
         Item item1 = new Item();
         item1.setId("MLA608001111");
         item1.setSiteId("MLB");
-        item1.setTitle("Item De Testeo, Por Favor No Ofertar --kc:off");
+        item1.setTitle("Item De Testeo");
         item1.setSubtitle("testeo");
         item1.setSellerId(202593498);
         item1.setCategoryId("MLA3530");
         item1 = insertItem(item1);
-        System.out.println("item inserted --> " + item1.toString());
+        System.out.println("item insertado --> " + item1.toString());
 
-        System.out.println("Changing site_Id to `MLC`...");
+        System.out.println("Cambie siteId a `MLC`...");
         item.setSiteId("MLC");
         updateItemById(item.getId(), item);
-        System.out.println("Item updated  --> " + item);
+        System.out.println("Item actualizado  --> " + item);
 
 
-        System.out.println("Getting Item...");
+        System.out.println("Obteniendo Item...");
         Item itemFromDB = getItemById(item1.getId());
-        System.out.println("Item from DB  --> " + itemFromDB);
+        System.out.println("Item desde DB  --> " + itemFromDB);
 
 
-        System.out.println("Deleting Item...");
+        System.out.println("Borrando Item...");
         deleteItemById(itemFromDB.getId());
-        System.out.println("Item Deleted");
+        System.out.println("Item Borrado");
 
 
 
-/*
-        System.out.println("Changing name to `Shubham Aggarwal`...");
-        person.setName("Shubham Aggarwal");
-        updatePersonById(person.getPersonId(), person);
-        System.out.println("Person updated  --> " + person);
 
-        System.out.println("Getting Shubham...");
-        Person personFromDB = getPersonById(person.getPersonId());
-        System.out.println("Person from DB  --> " + personFromDB);
-
-        System.out.println("Deleting Shubham...");
-        deletePersonById(personFromDB.getPersonId());
-        System.out.println("Person Deleted");
-*/
         closeConnection();
     }
 }
